@@ -1,0 +1,13 @@
+<header>
+  <nav>
+    <a href="/" class="logo">
+      <i class="fas fa-road"></i>
+      ACA <span>MOV</span>
+    </a>
+    <ul class="nav-links">
+      {{ range .Site.Menus.main }}
+      <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+  </nav>
+</header>

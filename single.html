@@ -1,0 +1,27 @@
+{{ define "main" }}
+<article class="content" style="max-width: 800px; margin: 120px auto 4rem;">
+  {{ if .Params.image }}
+  <img src="{{ .Params.image }}" alt="{{ .Title }}" style="width: 100%; height: 400px; object-fit: cover; border-radius: 15px; margin-bottom: 2rem;">
+  {{ end }}
+
+  {{ if .Params.category }}
+  <span class="category">{{ .Params.category }}</span>
+  {{ end }}
+
+  <h1 style="font-size: 2.5rem; color: var(--primary); margin: 1rem 0;">{{ .Title }}</h1>
+
+  <div style="color: var(--gray); margin-bottom: 2rem;">
+    <i class="far fa-calendar"></i> {{ .Date.Format "2 de January de 2006" }}
+    {{ if .Params.readTime }} | <i class="far fa-clock"></i> {{ .Params.readTime }}{{ end }}
+    {{ if .Params.author }} | <i class="far fa-user"></i> {{ .Params.author }}{{ end }}
+  </div>
+
+  <div style="line-height: 1.8; color: var(--dark); font-size: 1.1rem;">
+    {{ .Content }}
+  </div>
+
+  <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--light);">
+    <a href="{{ .Section | relURL }}" class="read-more">← Volver a {{ .Section }}</a>
+  </div>
+</article>
+{{ end }}

@@ -1,0 +1,169 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: editorial_workflow
+
+site_url: https://acamov.org
+logo_url: /images/logo.png
+
+collections:
+  # NOTICIAS
+  - name: "noticias"
+    label: "Noticias"
+    folder: "content/noticias"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    fields:
+      - {label: "Título", name: "title", widget: "string", required: true}
+      - {label: "Fecha de Publicación", name: "date", widget: "datetime", required: true}
+      - {label: "Categoría", name: "category", widget: "select", options: ["Legislación", "Estadísticas", "Campañas", "Tecnología", "Capacitación", "Infraestructura"], required: true}
+      - {label: "Imagen Destacada", name: "image", widget: "image", required: true}
+      - {label: "Extracto", name: "excerpt", widget: "text", required: true}
+      - {label: "Tiempo de Lectura", name: "readTime", widget: "string", default: "5 min"}
+      - {label: "Contenido", name: "body", widget: "markdown", required: true}
+      - {label: "Destacada", name: "featured", widget: "boolean", default: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+
+  # BLOG
+  - name: "blog"
+    label: "Blog"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    fields:
+      - {label: "Título", name: "title", widget: "string", required: true}
+      - {label: "Fecha", name: "date", widget: "datetime", required: true}
+      - {label: "Autor", name: "author", widget: "string", required: true}
+      - {label: "Categoría", name: "category", widget: "select", options: ["Consejos", "Innovación", "Educación", "Conciencia", "Infraestructura", "Normativa", "Salud", "Familia", "Movilidad"], required: true}
+      - {label: "Imagen Destacada", name: "image", widget: "image", required: true}
+      - {label: "Resumen", name: "summary", widget: "text", required: true}
+      - {label: "Contenido", name: "body", widget: "markdown", required: true}
+      - {label: "Tiempo de Lectura", name: "readTime", widget: "string", default: "10 min"}
+      - {label: "Destacado", name: "featured", widget: "boolean", default: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+
+  # CAMPAÑAS
+  - name: "campanas"
+    label: "Campañas"
+    folder: "content/campanas"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    fields:
+      - {label: "Nombre de la Campaña", name: "title", widget: "string", required: true}
+      - {label: "Subtítulo", name: "subtitle", widget: "string", required: true}
+      - {label: "Icono", name: "icon", widget: "select", options: ["users", "wine-glass-alt", "car", "heart", "road", "shield-alt"], required: true}
+      - {label: "Imagen de Header", name: "heroImage", widget: "image", required: true}
+      - {label: "Descripción", name: "description", widget: "markdown", required: true}
+      - {label: "Estadísticas", name: "stats", widget: "list", fields: [
+          {label: "Número", name: "number", widget: "string"},
+          {label: "Etiqueta", name: "label", widget: "string"}
+        ], required: false}
+      - {label: "Botón de Acción", name: "ctaText", widget: "string", default: "Participar"}
+      - {label: "Link de Acción", name: "ctaLink", widget: "string", default: "#"}
+      - {label: "Activa", name: "active", widget: "boolean", default: true}
+      - {label: "Orden", name: "order", widget: "number", default: 0}
+
+  # PROYECTOS
+  - name: "proyectos"
+    label: "Proyectos"
+    folder: "content/proyectos"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    fields:
+      - {label: "Nombre del Proyecto", name: "title", widget: "string", required: true}
+      - {label: "Subtítulo", name: "subtitle", widget: "string", required: true}
+      - {label: "Badge", name: "badge", widget: "string", required: true}
+      - {label: "Color del Badge", name: "badgeColor", widget: "select", options: ["accent", "secondary", "primary"], default: "accent"}
+      - {label: "Imagen de Header", name: "heroImage", widget: "image", required: true}
+      - {label: "Descripción", name: "description", widget: "markdown", required: true}
+      - {label: "Tecnologías", name: "technologies", widget: "list", fields: [
+          {label: "Nombre", name: "name", widget: "string"},
+          {label: "Icono", name: "icon", widget: "string"}
+        ], required: false}
+      - {label: "Estadísticas", name: "stats", widget: "list", fields: [
+          {label: "Valor", name: "value", widget: "string"},
+          {label: "Etiqueta", name: "label", widget: "string"}
+        ], required: false}
+      - {label: "Estado", name: "status", widget: "select", options: ["En curso", "Finalizado", "Planificación"], default: "En curso"}
+      - {label: "Orden", name: "order", widget: "number", default: 0}
+
+  # CHARLAS (MEDIOS)
+  - name: "charlas"
+    label: "Charlas y Medios"
+    folder: "content/charlas"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    fields:
+      - {label: "Título", name: "title", widget: "string", required: true}
+      - {label: "Tipo", name: "type", widget: "select", options: ["Podcast", "Entrevista", "Charla"], required: true}
+      - {label: "Fecha", name: "date", widget: "datetime", required: true}
+      - {label: "Lugar/Plataforma", name: "venue", widget: "string", required: true}
+      - {label: "Imagen/Thumbnail", name: "image", widget: "image", required: true}
+      - {label: "Descripción", name: "description", widget: "text", required: true}
+      - {label: "Duración", name: "duration", widget: "string", default: "30 min"}
+      - {label: "Link al Video/Audio", name: "mediaUrl", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Destacada", name: "featured", widget: "boolean", default: false}
+
+  # SERVICIOS
+  - name: "servicios"
+    label: "Servicios Corporativos"
+    folder: "content/servicios"
+    create: true
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    fields:
+      - {label: "Nombre del Servicio", name: "title", widget: "string", required: true}
+      - {label: "Subtítulo", name: "subtitle", widget: "string", required: true}
+      - {label: "Icono", name: "icon", widget: "select", options: ["clipboard-check", "heartbeat", "chalkboard-teacher", "car", "users", "road"], required: true}
+      - {label: "Color del Header", name: "headerColor", widget: "select", options: ["primary", "secondary", "accent"], default: "primary"}
+      - {label: "Descripción", name: "description", widget: "markdown", required: true}
+      - {label: "Características", name: "features", widget: "list", fields: [
+          {label: "Título", name: "title", widget: "string"},
+          {label: "Descripción", name: "description", widget: "text"},
+          {label: "Icono", name: "icon", widget: "string"}
+        ], required: true}
+      - {label: "Precio Desde", name: "price", widget: "string", default: "Consultar"}
+      - {label: "Incluye", name: "includes", widget: "list", required: false}
+      - {label: "Orden", name: "order", widget: "number", default: 0}
+
+  # PÁGINAS ESTÁTICAS
+  - name: "pages"
+    label: "Páginas"
+    files:
+      - file: "content/_index.md"
+        label: "Página de Inicio"
+        name: "home"
+        fields:
+          - {label: "Título", name: "title", widget: "string"}
+          - {label: "Subtítulo", name: "subtitle", widget: "string"}
+          - label: "Slides del Carrusel"
+            name: "slides"
+            widget: "list"
+            fields:
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - {label: "Imagen de fondo", name: "image", widget: "image"}
+              - {label: "Texto del botón", name: "buttonText", widget: "string"}
+              - {label: "Link del botón", name: "buttonLink", widget: "string"}

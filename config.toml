@@ -1,0 +1,53 @@
+baseURL = 'https://acamov.org'
+languageCode = 'es-ar'
+title = 'ACA MOVILIDAD'
+theme = 'aca-mov'
+
+[params]
+  description = 'Seguridad Vial y Movilidad Sostenible'
+  author = 'ACA MOV'
+  logo = '/images/logo.png'
+
+[menu]
+  [[menu.main]]
+    name = 'Inicio'
+    url = '/'
+    weight = 10
+
+  [[menu.main]]
+    name = 'Noticias'
+    url = '/noticias/'
+    weight = 20
+
+  [[menu.main]]
+    name = 'Blog'
+    url = '/blog/'
+    weight = 30
+
+  [[menu.main]]
+    name = 'Campañas'
+    url = '/campanas/'
+    weight = 40
+
+  [[menu.main]]
+    name = 'Proyectos'
+    url = '/proyectos/'
+    weight = 50
+
+  [[menu.main]]
+    name = 'Medios'
+    url = '/medios/'
+    weight = 60
+
+  [[menu.main]]
+    name = 'Servicios'
+    url = '/servicios/'
+    weight = 70
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+
+[permalinks]
+  noticias = '/noticias/:slug/'
+  blog = '/blog/:slug/'
